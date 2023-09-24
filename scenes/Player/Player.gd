@@ -13,7 +13,18 @@ var current_direction = DIRECTIONS.DOWN
 
 func _physics_process(delta: float) -> void:
 	if velocity == Vector2.ZERO:
-		animation_sprite.play("idle")
+		match current_direction:
+			DIRECTIONS.UP: 
+				animation_sprite.play("walk_up")
+			DIRECTIONS.RIGHT:
+				animation_sprite.play("walk_right")
+			DIRECTIONS.DOWN:
+				animation_sprite.play("walk_down")
+			DIRECTIONS.LEFT:
+				animation_sprite.play("walk_left")
+
+		animation_sprite.set_frame_and_progress(0,0)
+		animation_sprite.pause()
 	
 	velocity = Vector2.ZERO
 	
