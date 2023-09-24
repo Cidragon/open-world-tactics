@@ -1,23 +1,37 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED : float = 100.0
+enum DIRECTIONS{
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT
+}
+@onready var animation_sprite : AnimatedSprite2D = %AnimatedSprite2D
+
+var current_direction = DIRECTIONS.DOWN
 
 func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var horizontal := Input.get_axis("ui_left", "ui_right")
-	if horizontal:
-		velocity.x = horizontal * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	var vertical := Input.get_axis("ui_up", "ui_down")
-	if vertical:
-		velocity.y = vertical * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-		
+	if velocity == Vector2.ZERO:
+		animation_sprite.play("idle")
+	
+	velocity = Vector2.ZERO
+	
+	if Input.is_action_pressed("ui_up"):
+		velocity.y = -SPEED
+		animation_sprite.play("walk_up")
+		current_direction = DIRECTIONS.UP
+	elif Input.is_action_pressed("ui_right"):
+		velocity.x = SPEED
+		animation_sprite.play("walk_right")
+		current_direction = DIRECTIONS.RIGHT
+	elif Input.is_action_pressed("ui_down"):
+		velocity.y = SPEED
+		animation_sprite.play("walk_down")
+		current_direction = DIRECTIONS.DOWN
+	elif Input.is_action_pressed("ui_left"):
+		velocity.x = -SPEED
+		animation_sprite.play("walk_left")
+		current_direction = DIRECTIONS.LEFT
 
 	move_and_slide()
-
-
