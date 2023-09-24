@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_ybwcn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o434g"]
-size = Vector2(16, 24)
+size = Vector2(16, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5myx"]
 atlas = ExtResource("1_k64t1")
@@ -156,17 +156,11 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_ybwcn")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_k64t1")
-centered = false
-hframes = 16
-vframes = 8
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_o434g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_fb8hw")
-animation = &"walk_right"
+animation = &"walk_down"
