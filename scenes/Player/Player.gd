@@ -5,8 +5,13 @@ const SPEED : float = 75.0
 
 var tilemap : TileMap
 
+@onready var legs : AnimatedSprite2D = %legs
+@onready var head : Sprite2D = %head
+
 func _ready() -> void:
 	#animation_sprite.material.set_shader_parameter("active", false)
+	legs.play("walk_down")
+	legs.connect("frame_information", head.move_head)
 	pass
 
 
@@ -14,23 +19,28 @@ func _physics_process(delta: float) -> void:
 	is_inside_grass()
 	if velocity == Vector2.ZERO:
 		# If player was moving then there is an animation player still running in the background
-		animation_sprite.set_frame_and_progress(0,0)
-		animation_sprite.pause()
+		legs.set_frame_and_progress(2,0)
+		legs.pause()
 	
 	velocity = Vector2.ZERO
 	
 	if Input.is_action_pressed("ui_up"):
 		velocity.y = -SPEED
-		animation_sprite.play("walk_up")
+		legs.play("walk_up")
+		head.frame = 3
 	elif Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
-		animation_sprite.play("walk_right")
+		legs.play("walk_right")
+		head.frame = 2
 	elif Input.is_action_pressed("ui_down"):
 		velocity.y = SPEED
-		animation_sprite.play("walk_down")
+		legs.play("walk_down")
+		head.frame = 0
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
-		animation_sprite.play("walk_left")
+		legs.play("walk_left")
+		head.frame = 1
+		
 
 	move_and_slide()
 

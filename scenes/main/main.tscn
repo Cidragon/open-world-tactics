@@ -4644,6 +4644,7 @@ script = ExtResource("1_uersl")
 
 [node name="background" type="TileMap" parent="."]
 unique_name_in_owner = true
+y_sort_enabled = true
 scale = Vector2(1.05988, 0.937898)
 tile_set = SubResource("TileSet_ys6nq")
 format = 2
@@ -4652,9 +4653,9 @@ layer_0/tile_data = PackedInt32Array(65536, 327680, 10, 0, 327680, 10, 1, 327680
 layer_1/name = "grass"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
+layer_1/y_sort_enabled = true
 layer_1/y_sort_origin = 0
-layer_1/z_index = 0
+layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(851971, 2, 1, 917507, 2, 1, 983043, 2, 1, 851972, 65538, 1, 917508, 2, 3, 983044, 65538, 1, 851973, 2, 3, 917509, 65538, 1, 983045, 65538, 3, 1048580, 65538, 2, 1048581, 65538, 2, 1048582, 65538, 2, 1048583, 131074, 2, 983047, 131074, 1, 917511, 131074, 1, 851975, 131074, 1, 786439, 131074, 0, 786438, 65538, 0, 786437, 65538, 0, 786436, 65538, 0, 786435, 2, 0, 1048579, 2, 2, 851974, 65538, 3, 917510, 65538, 1, 983046, 65538, 1)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_7is52")]
