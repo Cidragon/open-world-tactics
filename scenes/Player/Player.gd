@@ -3,6 +3,9 @@ extends CharacterBody2D
 const SPEED : float = 100.0
 @onready var animation_sprite : AnimatedSprite2D = %AnimatedSprite2D
 
+func _ready() -> void:
+	animation_sprite.material.set_shader_parameter("active", true)
+
 
 func _physics_process(delta: float) -> void:
 	if velocity == Vector2.ZERO:

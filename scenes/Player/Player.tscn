@@ -1,10 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://bo6ch1qfj2mos"]
+[gd_scene load_steps=24 format=3 uid="uid://bo6ch1qfj2mos"]
 
 [ext_resource type="Texture2D" uid="uid://d2moj82f6w4x5" path="res://assets/gfx/character.png" id="1_k64t1"]
+[ext_resource type="Shader" path="res://scenes/Player/Player.gdshader" id="1_nqivv"]
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_ybwcn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o434g"]
 size = Vector2(16, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6w3co"]
+shader = ExtResource("1_nqivv")
+shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5myx"]
 atlas = ExtResource("1_k64t1")
@@ -162,5 +167,6 @@ shape = SubResource("RectangleShape2D_o434g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_6w3co")
 sprite_frames = SubResource("SpriteFrames_fb8hw")
-animation = &"walk_down"
+animation = &"idle"
