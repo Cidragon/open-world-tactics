@@ -13,6 +13,6 @@ func _process(delta: float) -> void:
 func move_to_next_frame(animation_name : String, frame_value : int) -> void:
 	pass
 	if frame_value % 2 != 0:
-		position = Vector2(0,1)
+		offset = Vector2(0,1)
 	else:
-		position = Vector2(0,0)
+		offset = Vector2(0,0)

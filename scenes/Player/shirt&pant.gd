@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,7 +12,3 @@ func _process(delta: float) -> void:
 
 func move_to_next_frame(animation_name : String, frame_value : int) -> void:
 	pass
-	if frame_value % 2 != 0:
-		position = Vector2(0,1)
-	else:
-		position = Vector2(0,0)

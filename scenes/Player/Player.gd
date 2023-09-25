@@ -7,11 +7,14 @@ var tilemap : TileMap
 
 @onready var legs : AnimatedSprite2D = %legs
 @onready var head : Sprite2D = %head
+@onready var shirt_and_pant : AnimatedSprite2D = %"shirt&pant"
+@onready var hair : Sprite2D = %hair
 
 func _ready() -> void:
 	#animation_sprite.material.set_shader_parameter("active", false)
 	legs.play("walk_down")
-	legs.connect("frame_information", head.move_head)
+	legs.connect("frame_information", head.move_to_next_frame)
+	
 	pass
 
 
@@ -28,18 +31,24 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -SPEED
 		legs.play("walk_up")
 		head.frame = 3
+		hair.frame = 3
 	elif Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
 		legs.play("walk_right")
 		head.frame = 2
+		hair.frame = 2
+		
 	elif Input.is_action_pressed("ui_down"):
 		velocity.y = SPEED
 		legs.play("walk_down")
 		head.frame = 0
+		hair.frame = 0
+		
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
 		legs.play("walk_left")
 		head.frame = 1
+		hair.frame = 1
 		
 
 	move_and_slide()
