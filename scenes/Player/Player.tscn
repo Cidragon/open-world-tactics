@@ -1,15 +1,16 @@
-[gd_scene load_steps=24 format=3 uid="uid://bo6ch1qfj2mos"]
+[gd_scene load_steps=25 format=3 uid="uid://bo6ch1qfj2mos"]
 
 [ext_resource type="Texture2D" uid="uid://d2moj82f6w4x5" path="res://assets/gfx/character.png" id="1_k64t1"]
 [ext_resource type="Shader" path="res://scenes/Player/Player.gdshader" id="1_nqivv"]
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_ybwcn"]
+[ext_resource type="Texture2D" uid="uid://bbhw5ntup6p85" path="res://icon.svg" id="4_ily5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o434g"]
-size = Vector2(16, 12)
+size = Vector2(16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6w3co"]
 shader = ExtResource("1_nqivv")
-shader_parameter/active = false
+shader_parameter/active = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5myx"]
 atlas = ExtResource("1_k64t1")
@@ -162,7 +163,7 @@ animations = [{
 script = ExtResource("1_ybwcn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(8, 24)
 shape = SubResource("RectangleShape2D_o434g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -170,3 +171,10 @@ unique_name_in_owner = true
 material = SubResource("ShaderMaterial_6w3co")
 sprite_frames = SubResource("SpriteFrames_fb8hw")
 animation = &"idle"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8, 28)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("4_ily5v")
