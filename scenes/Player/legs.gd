@@ -4,6 +4,12 @@ signal frame_information(name : String, frame : int)
 
 @onready var shirt_and_pants : AnimatedSprite2D = %"shirt&pant"
 
+const WALK_UP = "walk_up"
+const WALK_RIGHT = "walk_right"
+const WALK_DOWN = "walk_down"
+const WALK_LEFT = "walk_left"
+const STAND_FRAME : int = 2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

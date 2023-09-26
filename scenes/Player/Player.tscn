@@ -502,7 +502,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -589,30 +589,37 @@ position = Vector2(8, 23)
 sprite_frames = SubResource("SpriteFrames_xvsdg")
 animation = &"green"
 
-[node name="legs" type="AnimatedSprite2D" parent="."]
+[node name="offset" type="Node2D" parent="."]
+position = Vector2(24, 0)
+
+[node name="legs" type="AnimatedSprite2D" parent="offset"]
 unique_name_in_owner = true
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_r625p")
-animation = &"walk_up"
+animation = &"walk_down"
+frame = 2
+speed_scale = 1.5
 script = ExtResource("5_f1k21")
 
-[node name="shirt&pant" type="AnimatedSprite2D" parent="legs"]
+[node name="shirt&pant" type="AnimatedSprite2D" parent="offset/legs"]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_yeouo")
-animation = &"walk_up"
+animation = &"walk_down"
+frame = 2
+speed_scale = 1.5
 script = ExtResource("9_b6p78")
 
-[node name="head" type="Sprite2D" parent="."]
+[node name="head" type="Sprite2D" parent="offset"]
 unique_name_in_owner = true
 z_index = 1
 texture = ExtResource("5_raee7")
 vframes = 4
 script = ExtResource("7_6eb6e")
 
-[node name="hair" type="Sprite2D" parent="head"]
+[node name="hair" type="Sprite2D" parent="offset/head"]
 unique_name_in_owner = true
 texture = ExtResource("10_u0fma")
 vframes = 4
 
-[connection signal="animation_changed" from="legs" to="legs" method="_on_animation_changed"]
-[connection signal="frame_changed" from="legs" to="legs" method="_on_frame_changed"]
+[connection signal="animation_changed" from="offset/legs" to="offset/legs" method="_on_animation_changed"]
+[connection signal="frame_changed" from="offset/legs" to="offset/legs" method="_on_frame_changed"]
