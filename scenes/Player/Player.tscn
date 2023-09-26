@@ -1,203 +1,23 @@
-[gd_scene load_steps=83 format=3 uid="uid://bo6ch1qfj2mos"]
+[gd_scene load_steps=62 format=3 uid="uid://bo6ch1qfj2mos"]
 
-[ext_resource type="Texture2D" uid="uid://d2moj82f6w4x5" path="res://assets/gfx/character.png" id="1_k64t1"]
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_ybwcn"]
 [ext_resource type="Texture2D" uid="uid://gqf1lq0s0xye" path="res://assets/overlay_default.png" id="4_bhnfg"]
 [ext_resource type="Texture2D" uid="uid://brb00fmou4f8a" path="res://assets/images/characters/human/parts/body/skintone/normal/tone_3/walkAndRun.png" id="4_ngjjm"]
+[ext_resource type="Shader" path="res://scenes/Player/Player.gdshader" id="4_vp848"]
 [ext_resource type="Script" path="res://scenes/Player/legs.gd" id="5_f1k21"]
 [ext_resource type="Texture2D" uid="uid://lern7x1ugxot" path="res://assets/images/characters/human/parts/head/skintone/normal/tone_3/head.png" id="5_raee7"]
 [ext_resource type="Script" path="res://scenes/Player/head.gd" id="7_6eb6e"]
 [ext_resource type="Texture2D" uid="uid://cwyl3y204d6m6" path="res://assets/images/characters/human/parts/body/clothing/normal/player_boy_2_b/walkAndRun.png" id="8_hkhsf"]
 [ext_resource type="Script" path="res://scenes/Player/shirt&pant.gd" id="9_b6p78"]
 [ext_resource type="Texture2D" uid="uid://n2t00f8j2pip" path="res://assets/images/characters/human/parts/head/hair/male_messy_2_black/head.png" id="10_u0fma"]
+[ext_resource type="Script" path="res://scenes/Player/grass_overlay.gd" id="11_hvaw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o434g"]
 size = Vector2(16, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6w3co"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5myx"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3xtgt"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1cvvx"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k6yio"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r1b0k"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3uyfk"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(0, 96, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xkv8w"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(16, 96, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mcc6c"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(32, 96, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ffvaj"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(48, 96, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8rdu"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(0, 32, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_btgtn"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(16, 32, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_irr6g"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(32, 32, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qswux"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(48, 32, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7hwaj"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(0, 64, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8k8a4"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(16, 64, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ork12"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(32, 64, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikn0n"]
-atlas = ExtResource("1_k64t1")
-region = Rect2(48, 64, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fb8hw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p5myx")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3xtgt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1cvvx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k6yio")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r1b0k")
-}],
-"loop": true,
-"name": &"walk_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3uyfk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xkv8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mcc6c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ffvaj")
-}],
-"loop": true,
-"name": &"walk_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w8rdu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_btgtn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_irr6g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qswux")
-}],
-"loop": true,
-"name": &"walk_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7hwaj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8k8a4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ork12")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ikn0n")
-}],
-"loop": true,
-"name": &"walk_up",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rsl8n"]
-atlas = ExtResource("4_bhnfg")
-region = Rect2(0, 0, 16, 3)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3xkaa"]
-atlas = ExtResource("4_bhnfg")
-region = Rect2(16, 0, 16, 3)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nycvv"]
-atlas = ExtResource("4_bhnfg")
-region = Rect2(32, 0, 16, 3)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o3gtm"]
-atlas = ExtResource("4_bhnfg")
-region = Rect2(48, 0, 16, 3)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xvsdg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rsl8n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3xkaa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nycvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o3gtm")
-}],
-"loop": true,
-"name": &"green",
-"speed": 5.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh8tp"]
+shader = ExtResource("4_vp848")
+shader_parameter/active = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7krjc"]
 atlas = ExtResource("4_ngjjm")
@@ -402,6 +222,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_07a1e"]
+shader = ExtResource("4_vp848")
+shader_parameter/active = false
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pv6kv"]
 atlas = ExtResource("8_hkhsf")
 region = Rect2(0, 0, 28, 28)
@@ -502,7 +326,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -572,41 +396,28 @@ script = ExtResource("1_ybwcn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(8, 24)
+position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_o434g")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-material = SubResource("ShaderMaterial_6w3co")
-sprite_frames = SubResource("SpriteFrames_fb8hw")
-animation = &"idle"
-centered = false
-
-[node name="grass_effect" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(8, 23)
-sprite_frames = SubResource("SpriteFrames_xvsdg")
-animation = &"green"
-
 [node name="offset" type="Node2D" parent="."]
-position = Vector2(24, 0)
+position = Vector2(-2, 0)
 
 [node name="legs" type="AnimatedSprite2D" parent="offset"]
 unique_name_in_owner = true
-position = Vector2(0, 1)
+material = SubResource("ShaderMaterial_sh8tp")
 sprite_frames = SubResource("SpriteFrames_r625p")
 animation = &"walk_down"
 frame = 2
-speed_scale = 1.5
+speed_scale = 2.0
 script = ExtResource("5_f1k21")
 
 [node name="shirt&pant" type="AnimatedSprite2D" parent="offset/legs"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_07a1e")
 sprite_frames = SubResource("SpriteFrames_yeouo")
 animation = &"walk_down"
 frame = 2
-speed_scale = 1.5
+speed_scale = 2.0
 script = ExtResource("9_b6p78")
 
 [node name="head" type="Sprite2D" parent="offset"]
@@ -620,6 +431,13 @@ script = ExtResource("7_6eb6e")
 unique_name_in_owner = true
 texture = ExtResource("10_u0fma")
 vframes = 4
+
+[node name="grass_overlay" type="Sprite2D" parent="offset"]
+unique_name_in_owner = true
+position = Vector2(0, 10)
+texture = ExtResource("4_bhnfg")
+hframes = 4
+script = ExtResource("11_hvaw0")
 
 [connection signal="animation_changed" from="offset/legs" to="offset/legs" method="_on_animation_changed"]
 [connection signal="frame_changed" from="offset/legs" to="offset/legs" method="_on_frame_changed"]

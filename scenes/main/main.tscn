@@ -4661,18 +4661,17 @@ layer_1/tile_data = PackedInt32Array(851971, 2, 1, 917507, 2, 1, 983043, 2, 1, 8
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_7is52")]
 unique_name_in_owner = true
+position = Vector2(128, 128)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(4, 4)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="debug_line" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_fdvmh")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-118, -79)
-offset = Vector2(118, 79)
-anchor_mode = 0
-zoom = Vector2(4, 4)

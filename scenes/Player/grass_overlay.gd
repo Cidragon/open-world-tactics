@@ -1,6 +1,6 @@
 extends Sprite2D
 
-
+var pos = Vector2(position.x, position.y)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,12 +11,15 @@ func _process(delta: float) -> void:
 	pass
 
 func move_to_next_frame(animation_name : String, frame_value : int) -> void:
-	pass
-	#var tween = create_tween()
-	if frame_value % 2 != 0:
-		position = Vector2(0,1)
-		#tween.tween_property(self, "position", Vector2(0,1),0.2)
-	else:
-		position = Vector2(0,0)
-		#tween.tween_property(self, "position", Vector2(0,0),0.2)
-		
+	print(position.y)
+	match frame_value:
+		0:
+			position.y = pos.y + 1
+		1:
+			position.y = pos.y
+		2:
+			position.y = pos.y
+		3:
+			position.y = pos.y
+		4:
+			position.y = pos.y + 1
