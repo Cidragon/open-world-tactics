@@ -19,6 +19,9 @@ var tile_size : Vector2 = Vector2(16,16)
 var direction_history = []
 var previous_action = ""
 
+const DATA_LAYER : int = 0
+const GRASS_LAYER : int = 2
+
 func _ready() -> void:
 	#animation_sprite.material.set_shader_parameter("active", false)
 	legs.play(legs.WALK_DOWN)
@@ -98,12 +101,14 @@ func is_inside_grass() -> bool:
 	var x : int = (int(position.x)) - 4
 	var y : int = (int(position.y)) + 12
 	var tile_position : Vector2i = tilemap.local_to_map(Vector2i(x,y))
-	var tile_data = tilemap.get_cell_tile_data(1,tile_position)
+	var tile_data = tilemap.get_cell_tile_data(GRASS_LAYER,tile_position)
 	
 	if tile_data != null:
 		if tile_data.get_custom_data('is_grass'):
+			print("inside grass")
 			return true
 		else:
+			print("nothing here")
 			return false
 	return false
 
@@ -111,7 +116,7 @@ func is_walkable(next_position : Vector2) -> bool:
 	var x : int = (int(next_position.x)) - 4
 	var y : int = (int(next_position.y)) + 12
 	var tile_position : Vector2i = tilemap.local_to_map(Vector2i(x,y))
-	var tile_data = tilemap.get_cell_tile_data(3,tile_position)
+	var tile_data = tilemap.get_cell_tile_data(DATA_LAYER,tile_position)
 	if tile_data != null:
 		if tile_data.get_custom_data('is_tree'):
 			print("next tile is a tree")

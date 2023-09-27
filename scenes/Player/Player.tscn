@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bo6ch1qfj2mos"]
+[gd_scene load_steps=61 format=3 uid="uid://bo6ch1qfj2mos"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_ybwcn"]
 [ext_resource type="Texture2D" uid="uid://c1spy3pyb78h6" path="res://assets/characters/human/parts/body/skintone/normal/tone_3/walkAndRun.png" id="3_2531c"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dfbsv7m1105q4" path="res://assets/characters/human/parts/head/skintone/normal/tone_3/head.png" id="6_438f7"]
 [ext_resource type="Script" path="res://scenes/Player/head.gd" id="7_6eb6e"]
 [ext_resource type="Texture2D" uid="uid://dnmq274yb10hn" path="res://assets/characters/human/parts/head/hair/male_messy_2_black/head.png" id="8_iuo7o"]
+[ext_resource type="Texture2D" uid="uid://46mh3w1hfuri" path="res://assets/grass/overlay_default.png" id="9_hbey3"]
 [ext_resource type="Script" path="res://scenes/Player/grass_overlay.gd" id="11_hvaw0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sh8tp"]
@@ -387,6 +388,7 @@ size = Vector2(16, 16)
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(8, 0)
 script = ExtResource("1_ybwcn")
 
 [node name="off_set" type="Node2D" parent="."]
@@ -432,13 +434,14 @@ vframes = 4
 unique_name_in_owner = true
 visible = false
 position = Vector2(-8, 9)
+texture = ExtResource("9_hbey3")
 centered = false
 hframes = 4
 script = ExtResource("11_hvaw0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(14, 20)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_o434g")
 
 [connection signal="animation_changed" from="off_set/legs" to="off_set/legs" method="_on_animation_changed"]
