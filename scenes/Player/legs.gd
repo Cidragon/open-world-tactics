@@ -10,22 +10,24 @@ const WALK_DOWN = "walk_down"
 const WALK_LEFT = "walk_left"
 const STAND_FRAME : int = 2
 
+var init_position = position
+
 func _on_frame_changed() -> void:
 	var current_frame = get_frame()
 	if current_frame == 0:
-		position.y = 2
+		position.y = init_position.y + 1
 		shirt_and_pants.frame = 0
 	elif current_frame == 1:
-		position.y = 1
+		position.y = init_position.y
 		shirt_and_pants.frame = 1
 	elif current_frame == 2:
-		position.y = 1
+		position.y = init_position.y
 		shirt_and_pants.frame = 2
 	elif current_frame == 3:
-		position.y = 1
+		position.y = init_position.y
 		shirt_and_pants.frame = 3
 	elif current_frame == 4:
-		position.y = 2
+		position.y = init_position.y + 1
 		shirt_and_pants.frame = 4
 		
 	#print("frame position from legs: " + str(position.y))

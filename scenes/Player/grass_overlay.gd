@@ -1,6 +1,6 @@
 extends Sprite2D
 
-var initial_pos = Vector2(-8, 9)
+var initial_pos = Vector2(-8, 8)
 
 func move_to_next_frame(animation_name : String, frame_value : int) -> void:
 	#print(position.y)

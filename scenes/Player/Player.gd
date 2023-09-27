@@ -29,7 +29,7 @@ func _ready() -> void:
 	pass
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var last_pressed_action = _controls_loop()
 	if previous_action == last_pressed_action:
 		input_press_timer += 1
@@ -96,7 +96,7 @@ func handle_inputs(last_pressed_action : String) -> void:
 
 func is_inside_grass() -> bool:
 	var x : int = (int(position.x)) - 4
-	var y : int = (int(position.y)) + 23
+	var y : int = (int(position.y)) + 12
 	var tile_position : Vector2i = tilemap.local_to_map(Vector2i(x,y))
 	var tile_data = tilemap.get_cell_tile_data(1,tile_position)
 	
@@ -105,17 +105,31 @@ func is_inside_grass() -> bool:
 			return true
 		else:
 			return false
-
 	return false
 
-func move_to_next_tile(new_position : Vector2) -> void:
+func is_walkable(next_position : Vector2) -> bool:
+	var x : int = (int(next_position.x)) - 4
+	var y : int = (int(next_position.y)) + 12
+	var tile_position : Vector2i = tilemap.local_to_map(Vector2i(x,y))
+	var tile_data = tilemap.get_cell_tile_data(3,tile_position)
+	if tile_data != null:
+		if tile_data.get_custom_data('is_tree'):
+			print("next tile is a tree")
+			print(position)
+			print(tilemap.map_to_local(tile_position))
+			return false
+	return true
+
+func move_to_next_tile(direction : Vector2) -> void:
 	if is_moving == false:
-		is_moving = true
-		var tween = create_tween()
-		legs.play()
-		tween.tween_property(self,"position", position + new_position,0.25)
-		tween.tween_callback(func(): is_moving = false)
-		tween.tween_callback(check_grass_behavior)
+		var next_position : Vector2 = position + direction
+		if is_walkable(next_position):
+			is_moving = true
+			var tween = create_tween()
+			legs.play()
+			tween.tween_property(self,"position", next_position,0.25)
+			tween.tween_callback(func(): is_moving = false)
+			tween.tween_callback(check_grass_behavior)
 
 func check_grass_behavior() -> void:
 	if is_inside_grass():
