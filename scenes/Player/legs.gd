@@ -38,7 +38,7 @@ func _on_frame_changed() -> void:
 		position.y = 2
 		shirt_and_pants.frame = 4
 		
-	print("frame position from legs: " + str(position.y))
+	#print("frame position from legs: " + str(position.y))
 	frame_information.emit(get_animation(), get_frame())
 
 

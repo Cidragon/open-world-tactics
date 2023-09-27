@@ -30,7 +30,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	print(position)
+	#print(position)
 	var last_pressed_action = _controls_loop()
 	if previous_action == last_pressed_action:
 		input_press_timer += 1
@@ -51,8 +51,6 @@ func _physics_process(delta: float) -> void:
 	if input_press_timer >= 5:
 		input_press_timer = 1
 	
-	if is_inside_grass():
-		pass
 
 func handle_inputs(last_pressed_action : String) -> void:
 	if Input.is_action_pressed("ui_up") and last_pressed_action == "ui_up" :
@@ -101,22 +99,22 @@ func is_inside_grass() -> bool:
 	var x : int = (int(position.x)) - 4
 	var y : int = (int(position.y)) + 23
 	var tile_position : Vector2i = tilemap.local_to_map(Vector2i(x,y))
-	#print(str(position.x) + " " + str(position.y))
-	#print(tile_position)
 	var tile_data = tilemap.get_cell_tile_data(1,tile_position)
+	
 	if tile_data != null:
 		if tile_data.get_custom_data('is_grass'):
-			#print("inside grass")
+			print("inside grass")
 			legs.material.set_shader_parameter("active", true)
-			legs.material.set_shader_parameter("frame", legs.frame)
+			legs.material.set_shader_parameter("frame", 0)
 			shirt_and_pant.material.set_shader_parameter("active", true)
 			grass_overlay.visible = true
+			return true
 		else:
 			legs.material.set_shader_parameter("active", false)
 			shirt_and_pant.material.set_shader_parameter("active", false)
+			legs.material.set_shader_parameter("frame", 0)			
 			grass_overlay.visible = false
-			
-			
+			return false
 	else:
 		legs.material.set_shader_parameter("active", false)
 		shirt_and_pant.material.set_shader_parameter("active", false)
@@ -131,6 +129,9 @@ func move_to_next_tile(new_position : Vector2) -> void:
 		legs.play()
 		tween.tween_property(self,"position", position + new_position,0.25)
 		tween.tween_callback(func(): is_moving = false)
+		if is_inside_grass():
+			pass
+			grass_overlay.next_frame()
 
 func _controls_loop() -> String:
 	for direction in INPUTS:
@@ -145,4 +146,3 @@ func _controls_loop() -> String:
 		var direction = direction_history[direction_history.size() - 1]
 		return direction
 	return ""
-		#print("move: " + str(direction))

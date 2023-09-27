@@ -18,6 +18,7 @@ size = Vector2(16, 16)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sh8tp"]
 shader = ExtResource("4_vp848")
 shader_parameter/active = true
+shader_parameter/frame = 0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7krjc"]
 atlas = ExtResource("4_ngjjm")
@@ -225,6 +226,7 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_07a1e"]
 shader = ExtResource("4_vp848")
 shader_parameter/active = false
+shader_parameter/frame = 0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pv6kv"]
 atlas = ExtResource("8_hkhsf")
@@ -434,9 +436,11 @@ vframes = 4
 
 [node name="grass_overlay" type="Sprite2D" parent="offset"]
 unique_name_in_owner = true
-position = Vector2(0, 10)
+position = Vector2(-8, 8)
 texture = ExtResource("4_bhnfg")
+centered = false
 hframes = 4
+frame = 2
 script = ExtResource("11_hvaw0")
 
 [connection signal="animation_changed" from="offset/legs" to="offset/legs" method="_on_animation_changed"]
