@@ -10,16 +10,6 @@ const WALK_DOWN = "walk_down"
 const WALK_LEFT = "walk_left"
 const STAND_FRAME : int = 2
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_frame_changed() -> void:
 	var current_frame = get_frame()
 	if current_frame == 0:
@@ -45,11 +35,11 @@ func _on_frame_changed() -> void:
 func _on_animation_changed() -> void:
 	var animation_name : String = get_animation()
 	match animation_name:
-		"walk_up":
-			shirt_and_pants.animation = "walk_up"
-		"walk_right":
-			shirt_and_pants.animation = "walk_right"
-		"walk_down":
-			shirt_and_pants.animation = "walk_down"
-		"walk_left":
-			shirt_and_pants.animation = "walk_left"
+		WALK_UP:
+			shirt_and_pants.animation = WALK_UP
+		WALK_RIGHT:
+			shirt_and_pants.animation = WALK_RIGHT
+		WALK_DOWN:
+			shirt_and_pants.animation = WALK_DOWN
+		WALK_LEFT:
+			shirt_and_pants.animation = WALK_LEFT

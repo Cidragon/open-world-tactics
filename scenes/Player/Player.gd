@@ -30,7 +30,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	#print(position)
 	var last_pressed_action = _controls_loop()
 	if previous_action == last_pressed_action:
 		input_press_timer += 1
@@ -103,22 +102,9 @@ func is_inside_grass() -> bool:
 	
 	if tile_data != null:
 		if tile_data.get_custom_data('is_grass'):
-			print("inside grass")
-			legs.material.set_shader_parameter("active", true)
-			legs.material.set_shader_parameter("frame", 0)
-			shirt_and_pant.material.set_shader_parameter("active", true)
-			grass_overlay.visible = true
 			return true
 		else:
-			legs.material.set_shader_parameter("active", false)
-			shirt_and_pant.material.set_shader_parameter("active", false)
-			legs.material.set_shader_parameter("frame", 0)			
-			grass_overlay.visible = false
 			return false
-	else:
-		legs.material.set_shader_parameter("active", false)
-		shirt_and_pant.material.set_shader_parameter("active", false)
-		grass_overlay.visible = false
 
 	return false
 
@@ -129,9 +115,19 @@ func move_to_next_tile(new_position : Vector2) -> void:
 		legs.play()
 		tween.tween_property(self,"position", position + new_position,0.25)
 		tween.tween_callback(func(): is_moving = false)
-		if is_inside_grass():
-			pass
+		tween.tween_callback(check_grass_behavior)
+
+func check_grass_behavior() -> void:
+	if is_inside_grass():
+			legs.material.set_shader_parameter("active", true)
+			legs.material.set_shader_parameter("frame", 0)
+			shirt_and_pant.material.set_shader_parameter("active", true)
+			grass_overlay.visible = true
 			grass_overlay.next_frame()
+	else:
+		legs.material.set_shader_parameter("active", false)
+		shirt_and_pant.material.set_shader_parameter("active", false)
+		grass_overlay.visible = false
 
 func _controls_loop() -> String:
 	for direction in INPUTS:
