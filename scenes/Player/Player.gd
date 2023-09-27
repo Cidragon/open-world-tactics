@@ -27,9 +27,6 @@ func _ready() -> void:
 	legs.play(legs.WALK_DOWN)
 	legs.connect("frame_information", head.move_to_next_frame)
 	legs.connect("frame_information", grass_overlay.move_to_next_frame)
-	
-	
-	pass
 
 
 func _physics_process(_delta: float) -> void:
