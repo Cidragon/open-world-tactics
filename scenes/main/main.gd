@@ -6,4 +6,4 @@ extends Node2D
 
 func _ready() -> void:
 	player.tilemap = tilemap
-
+	Variables.tilemap = tilemap

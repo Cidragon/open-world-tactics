@@ -29,7 +29,7 @@ func _ready() -> void:
 	legs.connect("frame_information", grass_overlay.move_to_next_frame)
 
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	var last_pressed_action = _controls_loop()
 	if previous_action == last_pressed_action:
 		input_press_timer += 1
@@ -130,7 +130,7 @@ func move_to_next_tile(direction : Vector2) -> void:
 			var tween = create_tween()
 			legs.play()
 			tween.tween_property(self,"position", next_position,0.25)
-			tween.tween_callback(func(): is_moving = false)
+			tween.tween_callback(func(): is_moving = false; print("tween"))
 			tween.tween_callback(check_grass_behavior)
 
 func check_grass_behavior() -> void:
