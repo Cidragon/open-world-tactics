@@ -10,6 +10,3 @@ func _draw() -> void:
 		draw_line(Vector2(i * 64, 0), Vector2(i * 64, 64 * 30),Color.WHITE,2)
 		draw_line(Vector2(0, i * 64), Vector2(64 * 30, i * 64),Color.WHITE,2)
 		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

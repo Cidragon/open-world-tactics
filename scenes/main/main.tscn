@@ -3357,4 +3357,4 @@ anchor_mode = 0
 zoom = Vector2(4, 4)
 
 [node name="Coromon" parent="." instance=ExtResource("10_7yywy")]
-position = Vector2(416, 80)
+position = Vector2(416, 96)

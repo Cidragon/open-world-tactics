@@ -1,14 +1,17 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmo3q4x8s65e5"]
+[gd_scene load_steps=28 format=3 uid="uid://bmo3q4x8s65e5"]
 
 [ext_resource type="Script" path="res://scenes/coromon/coromon.gd" id="1_06x07"]
 [ext_resource type="Texture2D" uid="uid://bupehr5ct46xr" path="res://assets/characters/monster/ELECTRIC_BEETLE_1_A.png" id="1_bd15k"]
 [ext_resource type="Shader" path="res://scenes/coromon/coromon.gdshader" id="2_fojyo"]
 [ext_resource type="Texture2D" uid="uid://d0eid18eogkyu" path="res://assets/test_move.png" id="3_30hsg"]
 [ext_resource type="Texture2D" uid="uid://b5j0scv2dpuk7" path="res://assets/grass_coromon.png" id="4_kj8ub"]
+[ext_resource type="Script" path="res://scenes/coromon/AnimatedSprite2D.gd" id="5_0js5u"]
+[ext_resource type="Script" path="res://scenes/coromon/grass_overlay_creature.gd" id="6_mbors"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xxb1g"]
 shader = ExtResource("2_fojyo")
 shader_parameter/active = false
+shader_parameter/side = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpchv"]
 atlas = ExtResource("1_bd15k")
@@ -21,6 +24,18 @@ region = Rect2(28, 56, 28, 28)
 [sub_resource type="AtlasTexture" id="AtlasTexture_keaft"]
 atlas = ExtResource("1_bd15k")
 region = Rect2(56, 56, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leolr"]
+atlas = ExtResource("1_bd15k")
+region = Rect2(0, 28, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjkfn"]
+atlas = ExtResource("1_bd15k")
+region = Rect2(28, 28, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gppuj"]
+atlas = ExtResource("1_bd15k")
+region = Rect2(56, 28, 28, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpmyj"]
 atlas = ExtResource("1_bd15k")
@@ -88,6 +103,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_leolr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjkfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gppuj")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_dpmyj")
 }, {
 "duration": 1.0,
@@ -150,21 +179,24 @@ script = ExtResource("1_06x07")
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_xxb1g")
 sprite_frames = SubResource("SpriteFrames_0lux6")
-animation = &"walk_right"
-frame_progress = 0.948567
+animation = &"idle_right"
 centered = false
 offset = Vector2(-6, -12)
+script = ExtResource("5_0js5u")
 
 [node name="grass_overlay_creature" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(8, 1)
+visible = false
+position = Vector2(4, 1)
 texture = ExtResource("4_kj8ub")
 hframes = 4
 frame = 3
+script = ExtResource("6_mbors")
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 5.0
+wait_time = 2.5
 one_shot = true
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

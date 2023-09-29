@@ -23,7 +23,6 @@ Variables="*res://singleton/variables.gd"
 
 window/size/viewport_width=2048
 window/size/viewport_height=1024
-window/size/mode=3
 
 [input]
 

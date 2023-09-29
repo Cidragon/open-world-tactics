@@ -4,24 +4,29 @@ extends Node2D
 @onready var grass_overlay : Sprite2D = %grass_overlay_creature
 @onready var timer : Timer = %Timer
 @onready var path = [position - Vector2(128,0), position]
-var current_path_index : int = 0
+var current_path_index : int = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	move_to_next_point()
+	animated_sprite.play("idle_left")
+	animated_sprite.connect("change_grass_position", grass_overlay.update_position)
+	#move_to_next_point()
+
+func _process(_delta: float) -> void:
+	pass
+	#print(grass_overlay.position)
+
 
 func move_to_next_point() -> void:
 	if position != path[current_path_index]:
 		var tween = create_tween()
 		var next_position = choose_direction(path[current_path_index])
-		await tween.tween_property(self, "position", next_position, 0.25)
+		animated_sprite.material.set_shader_parameter("side", get_animation_index())
+		tween.tween_property(self, "position", next_position, 0.25)
 		tween.tween_callback(check_grass_behavior)
 		tween.tween_callback(update_path_index)
 		tween.tween_callback(move_to_next_point)
-	else:
-		animated_sprite.play("idle_left")
-
 
 func choose_direction(next_position: Vector2) -> Vector2:
 	if next_position.x > position.x:
@@ -55,15 +60,34 @@ func is_inside_grass() -> bool:
 
 func check_grass_behavior() -> void:
 	if is_inside_grass():
+		#animated_sprite.material.set_shader_parameter("side", get_animation_index())
 		animated_sprite.material.set_shader_parameter("active", true)
+		print(get_animation_index())
 		grass_overlay.visible = true
 	else:
+		print("shader set to false")
 		animated_sprite.material.set_shader_parameter("active", false)
 		grass_overlay.visible = false
 
 func update_path_index() -> void:
 	if position == path[current_path_index] and current_path_index < path.size() - 1: 
 		timer.start()
+		animated_sprite.set_to_idle()
+		animated_sprite.play("idle_left")
+		animated_sprite.material.set_shader_parameter("side", get_animation_index())
+	else:
+		animated_sprite.set_to_idle()
+
+func get_animation_index() -> int:
+	var animation_name = animated_sprite.get_animation()
+	print(animation_name)
+	match animation_name:
+		"walk_up": return 0
+		"walk_right": return 1
+		"walk_down": return 2
+		"walk_left": return 3
+		"idle_left": return -1
+	return -1
 
 func _on_timer_timeout() -> void:
 	print("timer finish")

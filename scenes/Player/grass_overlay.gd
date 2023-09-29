@@ -2,7 +2,7 @@ extends Sprite2D
 
 var initial_pos = Vector2(-8, 9)
 
-func move_to_next_frame(animation_name : String, frame_value : int) -> void:
+func move_to_next_frame(_animation_name : String, frame_value : int) -> void:
 	#print(position.y)
 	match frame_value:
 		0:

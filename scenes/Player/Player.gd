@@ -146,15 +146,15 @@ func check_grass_behavior() -> void:
 		grass_overlay.visible = false
 
 func _controls_loop() -> String:
-	for direction in INPUTS:
-		if Input.is_action_just_released(direction):
-			var index = direction_history.find(direction)
+	for current_direction in INPUTS:
+		if Input.is_action_just_released(current_direction):
+			var index = direction_history.find(current_direction)
 			if index != -1:
 				direction_history.remove_at(index)
-		if Input.is_action_just_pressed(direction):
-			direction_history.push_back(direction)
+		if Input.is_action_just_pressed(current_direction):
+			direction_history.push_back(current_direction)
 
 	if direction_history.size():
-		var direction = direction_history[direction_history.size() - 1]
-		return direction
+		var current_direction = direction_history[direction_history.size() - 1]
+		return current_direction
 	return ""
