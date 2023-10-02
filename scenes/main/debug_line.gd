@@ -7,6 +7,8 @@ func _ready() -> void:
 
 func _draw() -> void:
 	for i in range(30):
-		draw_line(Vector2(i * 64, 0), Vector2(i * 64, 64 * 30),Color.WHITE,2)
-		draw_line(Vector2(0, i * 64), Vector2(64 * 30, i * 64),Color.WHITE,2)
+		var some_white = Color.WHITE
+		some_white.a = 0.5
+		draw_line(Vector2(i * 64, 0), Vector2(i * 64, 64 * 30),some_white,2)
+		draw_line(Vector2(0, i * 64), Vector2(64 * 30, i * 64),some_white,2)
 		

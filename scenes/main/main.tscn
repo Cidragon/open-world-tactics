@@ -1,15 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://csl6yn3w1p1kg"]
+[gd_scene load_steps=23 format=3 uid="uid://csl6yn3w1p1kg"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_uersl"]
 [ext_resource type="PackedScene" uid="uid://bo6ch1qfj2mos" path="res://scenes/Player/Player.tscn" id="2_7is52"]
 [ext_resource type="Texture2D" uid="uid://ccou4ow7ddas8" path="res://assets/16x16.png" id="2_um4ra"]
 [ext_resource type="Texture2D" uid="uid://dn03bwu1cdarm" path="res://assets/32x64.png" id="3_ho0qd"]
 [ext_resource type="Texture2D" uid="uid://dwrmxc5ihc87b" path="res://assets/amish_tower.png" id="4_llq2r"]
-[ext_resource type="Texture2D" uid="uid://cy7uupjnoudup" path="res://assets/empty_tile_16x16.png" id="4_sxyix"]
 [ext_resource type="Texture2D" uid="uid://dgl14rcvxst0g" path="res://assets/grass/grass_default.png" id="5_2mnq1"]
 [ext_resource type="Script" path="res://scenes/main/debug_line.gd" id="6_fdvmh"]
 [ext_resource type="Texture2D" uid="uid://cgnbmx37r6r54" path="res://assets/Untitled.png" id="7_1ju2p"]
+[ext_resource type="Script" path="res://scenes/main/background.gd" id="7_5axos"]
+[ext_resource type="Script" path="res://scenes/main/Battle_effect.gd" id="10_0c1rc"]
 [ext_resource type="PackedScene" uid="uid://bmo3q4x8s65e5" path="res://scenes/coromon/coromon.tscn" id="10_7yywy"]
+[ext_resource type="Texture2D" uid="uid://cxgwijgoos833" path="res://assets/white_background.png" id="12_eseg5"]
+[ext_resource type="Script" path="res://scenes/main/white_background.gd" id="13_lm6ku"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yrob7"]
 texture = ExtResource("2_um4ra")
@@ -926,13 +929,6 @@ texture_region_size = Vector2i(32, 64)
 0:2/0/y_sort_origin = 25
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vb2nj"]
-texture = ExtResource("4_sxyix")
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/custom_data_1 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ofqjp"]
 texture = ExtResource("4_llq2r")
@@ -3295,14 +3291,23 @@ sources/1 = SubResource("TileSetAtlasSource_ghj36")
 sources/2 = SubResource("TileSetAtlasSource_ofqjp")
 sources/3 = SubResource("TileSetAtlasSource_c1ss3")
 sources/4 = SubResource("TileSetAtlasSource_esg83")
-sources/100 = SubResource("TileSetAtlasSource_vb2nj")
 sources/6 = SubResource("TileSetAtlasSource_g54gt")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ut1rr"]
+texture = ExtResource("7_1ju2p")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jspc4"]
+sources/0 = SubResource("TileSetAtlasSource_ut1rr")
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_uersl")
 
-[node name="background" type="TileMap" parent="."]
+[node name="world" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="background" type="TileMap" parent="world"]
 unique_name_in_owner = true
 y_sort_enabled = true
 tile_set = SubResource("TileSet_ys6nq")
@@ -3337,10 +3342,21 @@ layer_4/y_sort_enabled = true
 layer_4/y_sort_origin = 0
 layer_4/z_index = 1
 layer_4/tile_data = PackedInt32Array(-131072, 1, 1, -65535, 1, 0, 1, 1, 2, 131072, 1, 0, 196609, 1, 1, 262146, 1, 2, 327680, 1, 2, 393216, 1, 1, 458752, 1, 0, 524288, 1, 1, 720898, 1, 2, 786435, 1, 1, 720901, 1, 0, 786439, 1, 1, 720904, 1, 2, 851977, 1, 0, 786443, 1, 2, 720909, 1, 0, 786446, 1, 2, 720912, 1, 1, 851986, 1, 1, 786451, 1, 2, 720917, 1, 1, 851984, 1, 2, 589825, 1, 1, 655360, 1, 0, 196620, 1, 0, 65547, 1, 1, -65524, 1, 2, -131058, 1, 2, 327694, 655362, 45, 327695, 589826, 45, 262158, 131074, 46, 720903, 131072, 31, -65521, 1, 1, -131055, 1, 2, -131053, 1, 0, -65516, 1, 1, -131051, 1, 2, 22, 1, 0, -65513, 1, 2, 25, 1, 1, 65562, 1, 0, 28, 1, 2, 29, 1, 0, 65565, 1, 2, 131102, 1, 0, 262159, 65538, 46, 524315, 65538, 32, 589851, 65538, 32, 655387, 65538, 32, 720923, 65538, 32, 393244, 589826, 32, 393245, 655362, 31, 393246, 655362, 31, 393247, 655362, 31, 458779, 589826, 32, 458780, 589826, 31, 786458, 589826, 32, 851993, 589826, 32, 917529, 65538, 32, 983065, 65538, 32, 786459, 589826, 31, 851994, 589826, 31, 917524, 1, 1, 1048601, 65538, 32, 196632, 262146, 45, 262155, 1, 1, 327692, 1, 0)
+layer_5/name = ""
+layer_5/enabled = true
+layer_5/modulate = Color(1, 1, 1, 1)
+layer_5/y_sort_enabled = false
+layer_5/y_sort_origin = 0
+layer_5/z_index = 0
+layer_5/tile_data = PackedInt32Array()
+script = ExtResource("7_5axos")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_7is52")]
+[node name="CharacterBody2D" parent="world" instance=ExtResource("2_7is52")]
 unique_name_in_owner = true
 position = Vector2(136, 128)
+
+[node name="Coromon" parent="world" instance=ExtResource("10_7yywy")]
+position = Vector2(416, 96)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -3356,5 +3372,17 @@ script = ExtResource("6_fdvmh")
 anchor_mode = 0
 zoom = Vector2(4, 4)
 
-[node name="Coromon" parent="." instance=ExtResource("10_7yywy")]
-position = Vector2(416, 96)
+[node name="Battle_effect" type="TileMap" parent="."]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_jspc4")
+format = 2
+layer_0/z_index = 100
+script = ExtResource("10_0c1rc")
+
+[node name="white_background" type="Sprite2D" parent="Battle_effect"]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+texture = ExtResource("12_eseg5")
+centered = false
+script = ExtResource("13_lm6ku")

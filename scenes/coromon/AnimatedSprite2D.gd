@@ -10,4 +10,8 @@ func _on_animation_changed() -> void:
 	change_grass_position.emit(get_animation())
 
 func set_to_idle() -> void:
-	pass
+	match get_animation():
+		"walk_up": pass
+		"walk_right": play("idle_right")
+		"walk_down": pass
+		"walk_left": play("idle_left")

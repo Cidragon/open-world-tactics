@@ -383,9 +383,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o434g"]
-size = Vector2(16, 16)
+size = Vector2(8, 8)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="Area2D"]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(8, 0)
@@ -440,9 +440,9 @@ hframes = 4
 script = ExtResource("11_hvaw0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 8)
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_o434g")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_changed" from="off_set/legs" to="off_set/legs" method="_on_animation_changed"]
 [connection signal="frame_changed" from="off_set/legs" to="off_set/legs" method="_on_frame_changed"]

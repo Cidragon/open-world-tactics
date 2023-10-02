@@ -1,4 +1,6 @@
-extends CharacterBody2D
+extends Area2D
+
+signal pause_world()
 
 const SPEED : float = 75.0
 
@@ -158,3 +160,9 @@ func _controls_loop() -> String:
 		var current_direction = direction_history[direction_history.size() - 1]
 		return current_direction
 	return ""
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemy"):
+		pause_world.emit()
+		print("enter enemy")
