@@ -27,25 +27,24 @@ const GRASS_LAYER : int = 2
 func _ready() -> void:
 	#animation_sprite.material.set_shader_parameter("active", false)
 	legs.play(legs.WALK_DOWN)
+	legs.frame = 1
+	legs.pause()
 	legs.connect("frame_information", head.move_to_next_frame)
 	legs.connect("frame_information", grass_overlay.move_to_next_frame)
 
 
 func _process(_delta: float) -> void:
 	var last_pressed_action = _controls_loop()
+	
+	
+	if is_moving == false and not last_pressed_action:
+		legs.set_idle_frame(previous_action)
+	
 	if previous_action == last_pressed_action:
 		input_press_timer += 1
 	else:
 		previous_action = last_pressed_action
 		input_press_timer = 0
-	
-	if is_moving == false:
-		if legs.frame == legs.STAND_FRAME:
-			# If player was moving then there is an animation player still running in the background
-			#legs.set_frame_and_progress(2,0)
-			#legs.pause()
-			pass
-
 	
 	if last_pressed_action != "":
 		handle_inputs(last_pressed_action)

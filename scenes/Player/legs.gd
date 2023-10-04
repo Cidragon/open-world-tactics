@@ -31,3 +31,23 @@ func _on_animation_changed() -> void:
 			shirt_and_pants.animation = WALK_DOWN
 		WALK_LEFT:
 			shirt_and_pants.animation = WALK_LEFT
+	
+	play()
+	shirt_and_pants.play()
+
+func set_idle_frame(animation_name : String) -> void:
+	match animation_name:
+		WALK_UP:
+			shirt_and_pants.animation = WALK_UP
+		WALK_RIGHT:
+			shirt_and_pants.animation = WALK_RIGHT
+		WALK_DOWN:
+			shirt_and_pants.animation = WALK_DOWN
+		WALK_LEFT:
+			shirt_and_pants.animation = WALK_LEFT
+	
+	frame = 1
+	pause()
+	shirt_and_pants.frame = 1
+	shirt_and_pants.pause()
+	

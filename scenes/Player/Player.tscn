@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bo6ch1qfj2mos"]
+[gd_scene load_steps=41 format=3 uid="uid://bo6ch1qfj2mos"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_ybwcn"]
 [ext_resource type="Texture2D" uid="uid://c1spy3pyb78h6" path="res://assets/characters/human/parts/body/skintone/normal/tone_3/walkAndRun.png" id="3_2531c"]
@@ -15,21 +15,6 @@
 shader = ExtResource("4_vp848")
 shader_parameter/active = false
 shader_parameter/frame = 0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7krjc"]
-region = Rect2(0, 0, 28, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ob5ju"]
-region = Rect2(28, 0, 28, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjfno"]
-region = Rect2(56, 0, 28, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ujjqv"]
-region = Rect2(84, 0, 28, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2k88d"]
-region = Rect2(112, 0, 28, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5wfm"]
 atlas = ExtResource("3_2531c")
@@ -85,22 +70,7 @@ region = Rect2(84, 84, 28, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r625p"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7krjc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ob5ju")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fjfno")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ujjqv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2k88d")
-}],
+"frames": [],
 "loop": true,
 "name": &"default",
 "speed": 5.0
