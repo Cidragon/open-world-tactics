@@ -30,7 +30,6 @@ func _ready() -> void:
 	legs.frame = 1
 	legs.pause()
 	legs.connect("frame_information", head.move_to_next_frame)
-	legs.connect("frame_information", grass_overlay.move_to_next_frame)
 
 
 func _process(_delta: float) -> void:
@@ -166,3 +165,4 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
 		pause_world.emit()
 		print("enter enemy")
+
