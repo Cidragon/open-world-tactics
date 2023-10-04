@@ -7,5 +7,3 @@ func next_frame() -> void:
 		frame = 2
 	else:
 		frame = 0
-	
-	#print("current_frame: " + str(frame))

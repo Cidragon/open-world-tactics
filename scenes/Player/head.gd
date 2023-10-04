@@ -1,6 +1,8 @@
 extends Sprite2D
 
 @onready var eyes: Sprite2D = %eyes
+@onready var glasses: Sprite2D = %glasses
+
 var init_pos = position
 
 func move_to_next_frame(_animation_name : String, frame_value : int) -> void:
@@ -13,3 +15,4 @@ func move_to_next_frame(_animation_name : String, frame_value : int) -> void:
 
 func _on_frame_changed() -> void:
 	eyes.frame = frame
+	glasses.frame = frame

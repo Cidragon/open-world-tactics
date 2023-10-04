@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bo6ch1qfj2mos"]
+[gd_scene load_steps=43 format=3 uid="uid://bo6ch1qfj2mos"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_ybwcn"]
 [ext_resource type="Texture2D" uid="uid://c1spy3pyb78h6" path="res://assets/characters/human/parts/body/skintone/normal/tone_3/walkAndRun.png" id="3_2531c"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dnmq274yb10hn" path="res://assets/characters/human/parts/head/hair/male_messy_2_black/head.png" id="8_iuo7o"]
 [ext_resource type="Texture2D" uid="uid://buox1ooxwemt2" path="res://assets/characters/human/parts/head/eyes/high_eyeOnly/tone_3/head.png" id="9_ds4sd"]
 [ext_resource type="Texture2D" uid="uid://46mh3w1hfuri" path="res://assets/grass/overlay_default.png" id="9_hbey3"]
+[ext_resource type="Texture2D" uid="uid://je064j5krv2x" path="res://assets/characters/human/parts/head/glasses/slim_grey/head.png" id="10_uf18p"]
 [ext_resource type="Script" path="res://scenes/Player/grass_overlay.gd" id="11_hvaw0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sh8tp"]
@@ -293,7 +294,6 @@ script = ExtResource("5_f1k21")
 
 [node name="shirt&pant" type="AnimatedSprite2D" parent="off_set/legs"]
 unique_name_in_owner = true
-visible = false
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_07a1e")
 sprite_frames = SubResource("SpriteFrames_yeouo")
@@ -319,6 +319,12 @@ vframes = 4
 [node name="eyes" type="Sprite2D" parent="off_set/head"]
 unique_name_in_owner = true
 texture = ExtResource("9_ds4sd")
+centered = false
+vframes = 4
+
+[node name="glasses" type="Sprite2D" parent="off_set/head"]
+unique_name_in_owner = true
+texture = ExtResource("10_uf18p")
 centered = false
 vframes = 4
 
