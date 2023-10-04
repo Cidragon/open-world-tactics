@@ -14,22 +14,8 @@ var init_position = position
 
 func _on_frame_changed() -> void:
 	var current_frame = get_frame()
-	if current_frame == 0:
-		position.y = init_position.y + 1
-		shirt_and_pants.frame = 0
-	elif current_frame == 1:
-		position.y = init_position.y
-		shirt_and_pants.frame = 1
-	elif current_frame == 2:
-		position.y = init_position.y
-		shirt_and_pants.frame = 2
-	elif current_frame == 3:
-		position.y = init_position.y
-		shirt_and_pants.frame = 3
-	elif current_frame == 4:
-		position.y = init_position.y + 1
-		shirt_and_pants.frame = 4
-		
+	shirt_and_pants.frame = current_frame
+	
 	#print("frame position from legs: " + str(position.y))
 	frame_information.emit(get_animation(), get_frame())
 

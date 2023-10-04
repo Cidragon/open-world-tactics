@@ -43,10 +43,11 @@ func _process(_delta: float) -> void:
 		if legs.frame == legs.STAND_FRAME:
 			# If player was moving then there is an animation player still running in the background
 			#legs.set_frame_and_progress(2,0)
-			legs.pause()
+			#legs.pause()
+			pass
 
 	
-	if last_pressed_action != "" and input_press_timer == 0 or input_press_timer >= 5:
+	if last_pressed_action != "":
 		handle_inputs(last_pressed_action)
 	
 	if input_press_timer >= 5:
