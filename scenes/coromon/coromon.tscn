@@ -37,15 +37,15 @@ region = Rect2(28, 28, 28, 28)
 atlas = ExtResource("1_bd15k")
 region = Rect2(56, 28, 28, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dpmyj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tem2f"]
 atlas = ExtResource("1_bd15k")
 region = Rect2(0, 0, 28, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_33t1s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r28si"]
 atlas = ExtResource("1_bd15k")
 region = Rect2(28, 0, 28, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pj6ce"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j5xc"]
 atlas = ExtResource("1_bd15k")
 region = Rect2(56, 0, 28, 28)
 
@@ -117,13 +117,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dpmyj")
+"texture": SubResource("AtlasTexture_tem2f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_33t1s")
+"texture": SubResource("AtlasTexture_r28si")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pj6ce")
+"texture": SubResource("AtlasTexture_5j5xc")
 }],
 "loop": true,
 "name": &"walk_down",
@@ -182,9 +182,7 @@ script = ExtResource("1_06x07")
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_xxb1g")
 sprite_frames = SubResource("SpriteFrames_0lux6")
-animation = &"idle_right"
-frame = 2
-frame_progress = 0.200014
+animation = &"walk_down"
 centered = false
 offset = Vector2(-6, -12)
 script = ExtResource("5_0js5u")

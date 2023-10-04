@@ -163,6 +163,7 @@ func _controls_loop() -> String:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
+		grass_overlay.visible = false
 		pause_world.emit()
 		print("enter enemy")
 

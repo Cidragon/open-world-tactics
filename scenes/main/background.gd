@@ -4,7 +4,7 @@ const water_source : int = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Variables.tilemap = self
 
 func pause_animation() -> void:
 	var tile_set_atlas_source : TileSetSource = tile_set.get_source(water_source)

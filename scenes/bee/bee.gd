@@ -3,20 +3,19 @@ extends Node2D
 @onready var animated_sprite : AnimatedSprite2D = %AnimatedSprite2D
 @onready var grass_overlay : Sprite2D = %grass_overlay_creature
 @onready var timer : Timer = %Timer
-var init_position : Vector2
-@export var path : Array[Vector2]
+@onready var path = []
 var current_path_index : int = -1
 var leaving_grass : bool = false
 var counter : float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	init_position = position
-	print(init_position)
-	print(path)
-	animated_sprite.play("idle_left")
+	print(position)
+	var tile_position : Vector2i = Variables.tilemap.local_to_map(position)
+	print(tile_position)
+	get_parent().coromon_location = tile_position
+	animated_sprite.play("idle_right")
 	animated_sprite.connect("change_grass_position", grass_overlay.update_position)
-	check_grass_behavior()
 	#move_to_next_point()
 
 func _process(_delta: float) -> void:
@@ -26,9 +25,9 @@ func _process(_delta: float) -> void:
 
 func move_to_next_point() -> void:
 	#print(current_path_index)
-	if path.size() and position != init_position + path[current_path_index]:
+	if path.size() and position != path[current_path_index]:
 		var tween = create_tween()
-		var next_position = choose_direction(init_position + path[current_path_index])
+		var next_position = choose_direction(path[current_path_index])
 		animated_sprite.material.set_shader_parameter("side", get_animation_index())
 		tween.tween_property(self, "position", next_position, 0.25)
 		
@@ -78,11 +77,11 @@ func check_grass_behavior() -> void:
 		grass_overlay.visible = false
 
 func update_path_index() -> void:
-	if position == init_position + path[current_path_index] and current_path_index < path.size() - 1: 
+	if position == path[current_path_index] and current_path_index < path.size() - 1: 
 		timer.start()
 		animated_sprite.set_to_idle()
 		animated_sprite.material.set_shader_parameter("side", get_animation_index())
-	elif position == init_position + path[-1] and current_path_index == path.size() - 1:
+	elif position == path[-1] and current_path_index == path.size() - 1:
 		animated_sprite.set_to_idle()
 		
 
