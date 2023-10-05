@@ -59,7 +59,7 @@ script = ExtResource("10_0c1rc")
 [node name="white_background" type="Sprite2D" parent="Battle_effect"]
 unique_name_in_owner = true
 visible = false
-z_index = 1
+z_index = 100
 texture = ExtResource("12_eseg5")
 centered = false
 script = ExtResource("13_lm6ku")

@@ -15,9 +15,6 @@ func _process(delta: float) -> void:
 	if walkable_tiles.size() == 0 and tile_position == coromon_location:
 		var visited = {}
 		dfs_with_max_distance(tile_position, tile_position, 3, visited)
-		print(visited)
-		print("visited size: " + str(visited.size()))
-		#print("same position as coromon")
 	elif tile_position != coromon_location and walkable_tiles.size() != 0:
 		walkable_tiles = []
 		for child in get_children():
@@ -41,16 +38,10 @@ func dfs_with_max_distance(tile_position: Vector2i, tile : Vector2i, max_distanc
 		return
 	
 	visited[tile] = distance
-	print(visited)
 	var sprite := Sprite2D.new()
-#	var label = Label.new()
-#	label.text = str(tile)
-#	label.add_theme_font_size_override("font_size", 4)
-#	sprite.add_child(label)
 	sprite.texture = movement_tile
 	sprite.position = tile * Variables.tile_size - Vector2i(position.x, position.y)
 	sprite.z_index = -1
-	#print(sprite.position)
 	sprite.centered = false
 	walkable_tiles.push_back(sprite)
 	add_child(sprite)

@@ -10,7 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xxb1g"]
 shader = ExtResource("2_fojyo")
-shader_parameter/active = false
+shader_parameter/active = true
 shader_parameter/side = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kpchv"]
@@ -182,14 +182,14 @@ script = ExtResource("1_06x07")
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_xxb1g")
 sprite_frames = SubResource("SpriteFrames_0lux6")
-animation = &"walk_down"
+animation = &"idle_left"
+frame_progress = 0.110377
 centered = false
 offset = Vector2(-6, -12)
 script = ExtResource("5_0js5u")
 
 [node name="grass_overlay_creature" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 position = Vector2(4, 1)
 texture = ExtResource("4_kj8ub")
 hframes = 4
