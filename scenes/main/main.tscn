@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://csl6yn3w1p1kg"]
+[gd_scene load_steps=15 format=3 uid="uid://csl6yn3w1p1kg"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_uersl"]
 [ext_resource type="PackedScene" uid="uid://bo6ch1qfj2mos" path="res://scenes/Player/Player.tscn" id="2_7is52"]
 [ext_resource type="PackedScene" uid="uid://8jgbxrxc587o" path="res://scenes/background/background.tscn" id="2_sbcwo"]
+[ext_resource type="SpriteFrames" uid="uid://dlqt8i7xwc6yp" path="res://resources/animated_sprites/coromon.tres" id="5_chngg"]
 [ext_resource type="Script" path="res://scenes/main/debug_line.gd" id="6_fdvmh"]
+[ext_resource type="SpriteFrames" uid="uid://dhuyh667opfwk" path="res://resources/animated_sprites/snake.tres" id="6_p0kgh"]
 [ext_resource type="Texture2D" uid="uid://cgnbmx37r6r54" path="res://assets/Untitled.png" id="7_1ju2p"]
 [ext_resource type="PackedScene" uid="uid://byq1xflnej5js" path="res://scenes/camera/camera_2d.tscn" id="7_vqlmy"]
 [ext_resource type="Script" path="res://scenes/main/Battle_effect.gd" id="10_0c1rc"]
@@ -35,7 +37,12 @@ position = Vector2(136, 128)
 
 [node name="Coromon" parent="world" instance=ExtResource("10_7yywy")]
 position = Vector2(416, 96)
+animation_sprite_resource = ExtResource("5_chngg")
 path = Array[Vector2]([Vector2(-128, 0), Vector2(0, 0)])
+
+[node name="worm" parent="world" instance=ExtResource("10_7yywy")]
+position = Vector2(80, 32)
+animation_sprite_resource = ExtResource("6_p0kgh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

@@ -1,0 +1,68 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://dhuyh667opfwk"]
+
+[ext_resource type="Texture2D" uid="uid://bj21qyc16hud5" path="res://assets/characters/monster/NORMAL_ADDER_1_A.png" id="1_juw4r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwm0r"]
+atlas = ExtResource("1_juw4r")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kci7i"]
+atlas = ExtResource("1_juw4r")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3apmn"]
+atlas = ExtResource("1_juw4r")
+region = Rect2(56, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c7dx"]
+atlas = ExtResource("1_juw4r")
+region = Rect2(0, 84, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46dh2"]
+atlas = ExtResource("1_juw4r")
+region = Rect2(28, 84, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8rwr"]
+atlas = ExtResource("1_juw4r")
+region = Rect2(56, 84, 28, 28)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwm0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kci7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3apmn")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c7dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46dh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8rwr")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]

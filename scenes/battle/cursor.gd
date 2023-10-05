@@ -1,5 +1,7 @@
 extends Sprite2D
 
+signal show_battle_ui()
+
 @export var movement_tile : Texture
 var walkable_tiles : Array[Sprite2D] = []
 
@@ -29,6 +31,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		position += Vector2(0,Variables.tile_size)
 	elif event.is_action_pressed("ui_left"):
 		position += Vector2(-Variables.tile_size,0)
+	
+	if event.is_action_pressed("accept"):
+		var coromon_location = get_parent().coromon_location
+		var tile_position = Variables.tilemap.local_to_map(position)
+		if coromon_location == tile_position:
+			show_battle_ui.emit()
+	elif event.is_action_pressed("cancel"):
+		pass
 
 func dfs_with_max_distance(tile_position: Vector2i, tile : Vector2i, max_distance: int, visited : Dictionary):
 	var distance = abs(tile_position.x - tile.x) + abs(tile_position.y - tile.y)

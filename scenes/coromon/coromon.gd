@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var animation_sprite_resource : SpriteFrames
+
 @onready var animated_sprite : AnimatedSprite2D = %AnimatedSprite2D
 @onready var grass_overlay : Sprite2D = %grass_overlay_creature
 @onready var timer : Timer = %Timer
@@ -11,11 +13,12 @@ var counter : float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
+	animated_sprite.sprite_frames = animation_sprite_resource
 	init_position = position
 	print(init_position)
 	print(path)
 	animated_sprite.play("idle_left")
-	animated_sprite.connect("change_grass_position", grass_overlay.update_position)
+	#animated_sprite.connect("change_grass_position", grass_overlay.update_position)
 	check_grass_behavior()
 	#move_to_next_point()
 
@@ -61,9 +64,7 @@ func is_inside_grass(target_position: Vector2 = position) -> bool:
 		if tile_data.get_custom_data('is_grass'):
 			#print("inside grass")
 			return true
-		else:
-			#print("nothing here")
-			return false
+
 	return false
 
 func check_grass_behavior() -> void:
