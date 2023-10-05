@@ -43,10 +43,14 @@ func _process(delta: float) -> void:
 	elif show_effect == true:
 		restart_counter += delta
 		#print(restart_counter)
-		if restart_counter >= 2:
+		
+		
+		if restart_counter >= 0.25:
 			restart_counter = 0
 			show_effect = false
 			clear()
+			change_to_battle_scene()
+			
 			
 
 func show_battle_effect() -> void:
@@ -57,3 +61,7 @@ func show_battle_effect() -> void:
 	timer.start()
 	timer.connect("timeout", func (): show_effect = true)
 	timer.connect("timeout", func (): timer.queue_free())
+
+func change_to_battle_scene() -> void:
+	get_tree().change_scene_to_packed(Scenes.battle)
+	pass

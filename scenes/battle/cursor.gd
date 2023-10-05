@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var coromon_location = get_parent().coromon_location
 	var tile_position = Variables.tilemap.local_to_map(position)
 	if walkable_tiles.size() == 0 and tile_position == coromon_location:
