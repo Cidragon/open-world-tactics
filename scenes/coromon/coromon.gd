@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var animation_sprite_resource : SpriteFrames
+@export var walking_speed : float = 0.25
+@export var idle_start : String = "idle_left"
 
 @onready var animated_sprite : AnimatedSprite2D = %AnimatedSprite2D
 @onready var grass_overlay : Sprite2D = %grass_overlay_creature
@@ -17,7 +19,7 @@ func _ready() -> void:
 	init_position = position
 	print(init_position)
 	print(path)
-	animated_sprite.play("idle_left")
+	animated_sprite.play(idle_start)
 	#animated_sprite.connect("change_grass_position", grass_overlay.update_position)
 	check_grass_behavior()
 	#move_to_next_point()
@@ -33,7 +35,7 @@ func move_to_next_point() -> void:
 		var tween = create_tween()
 		var next_position = choose_direction(init_position + path[current_path_index])
 		animated_sprite.material.set_shader_parameter("side", get_animation_index())
-		tween.tween_property(self, "position", next_position, 0.25)
+		tween.tween_property(self, "position", next_position, walking_speed)
 		
 		tween.tween_callback(check_grass_behavior)
 		tween.tween_callback(update_path_index)

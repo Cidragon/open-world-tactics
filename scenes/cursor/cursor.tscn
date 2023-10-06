@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cofxg1csxx3yt"]
+
+[ext_resource type="Texture2D" uid="uid://bjv0athr6be1h" path="res://assets/battle/cursor_tile.png" id="1_xajgl"]
+[ext_resource type="Script" path="res://scenes/battle/cursor.gd" id="2_yo8if"]
+[ext_resource type="Texture2D" uid="uid://mvk5dwyi8bby" path="res://assets/battle/battle_walkable_tile.png" id="3_uuk6e"]
+[ext_resource type="SpriteFrames" uid="uid://s0vxsx47y6w4" path="res://resources/animated_sprites/bee.tres" id="4_j2aqk"]
+
+[node name="cursor" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_xajgl")
+centered = false
+script = ExtResource("2_yo8if")
+movement_tile = ExtResource("3_uuk6e")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+sprite_frames = ExtResource("4_j2aqk")
+animation = &"idle_right"
+centered = false
+offset = Vector2(-6, -12)

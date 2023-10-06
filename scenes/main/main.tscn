@@ -41,8 +41,10 @@ animation_sprite_resource = ExtResource("5_chngg")
 path = Array[Vector2]([Vector2(-128, 0), Vector2(0, 0)])
 
 [node name="worm" parent="world" instance=ExtResource("10_7yywy")]
-position = Vector2(80, 32)
+position = Vector2(112, 32)
 animation_sprite_resource = ExtResource("6_p0kgh")
+walking_speed = 0.5
+path = Array[Vector2]([Vector2(0, -16), Vector2(-64, 0), Vector2(0, 16), Vector2(0, 0)])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

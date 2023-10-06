@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/coromon/coromon.gd" id="1_06x07"]
 [ext_resource type="Shader" path="res://scenes/coromon/coromon.gdshader" id="2_fojyo"]
-[ext_resource type="SpriteFrames" uid="uid://dlqt8i7xwc6yp" path="res://resources/animated_sprites/coromon.tres" id="3_vqrb5"]
+[ext_resource type="SpriteFrames" uid="uid://dhuyh667opfwk" path="res://resources/animated_sprites/snake.tres" id="3_4n6pq"]
 [ext_resource type="Texture2D" uid="uid://b5j0scv2dpuk7" path="res://assets/grass_coromon.png" id="4_kj8ub"]
 [ext_resource type="Script" path="res://scenes/coromon/AnimatedSprite2D.gd" id="5_0js5u"]
 [ext_resource type="Script" path="res://scenes/coromon/grass_overlay_creature.gd" id="6_mbors"]
@@ -17,12 +17,13 @@ shader_parameter/side = 3
 size = Vector2(10, 10)
 
 [node name="Coromon" type="Node2D"]
+z_index = 1
 script = ExtResource("1_06x07")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_xxb1g")
-sprite_frames = ExtResource("3_vqrb5")
+sprite_frames = ExtResource("3_4n6pq")
 animation = &"walk_up"
 centered = false
 offset = Vector2(-6, -12)
