@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl4l3utc6xphu"]
+[gd_scene load_steps=13 format=3 uid="uid://cl4l3utc6xphu"]
 
 [ext_resource type="Script" path="res://scenes/battle/battle.gd" id="1_mpo3c"]
 [ext_resource type="PackedScene" uid="uid://8jgbxrxc587o" path="res://scenes/background/background.tscn" id="1_yt6bu"]
 [ext_resource type="PackedScene" uid="uid://byq1xflnej5js" path="res://scenes/camera/camera_2d.tscn" id="2_662cy"]
 [ext_resource type="PackedScene" uid="uid://cofxg1csxx3yt" path="res://scenes/cursor/cursor.tscn" id="4_fkmaa"]
+[ext_resource type="Texture2D" uid="uid://cpil5js3gmdq1" path="res://assets/battle/tile_movement_0.png" id="5_8qx17"]
 [ext_resource type="PackedScene" uid="uid://bmo3q4x8s65e5" path="res://scenes/coromon/coromon.tscn" id="6_q547v"]
+[ext_resource type="Texture2D" uid="uid://ddjdoa3nilae5" path="res://assets/battle/tile_movement_1.png" id="6_qt6rl"]
+[ext_resource type="Texture2D" uid="uid://bedexc3d3ycqv" path="res://assets/battle/tile_movement_2.png" id="7_74wl5"]
+[ext_resource type="Texture2D" uid="uid://dlr0v8or7nm3x" path="res://assets/battle/tile_movement_3.png" id="8_k1ysp"]
 [ext_resource type="SpriteFrames" uid="uid://dlqt8i7xwc6yp" path="res://resources/animated_sprites/coromon.tres" id="9_ambdl"]
 [ext_resource type="SpriteFrames" uid="uid://s0vxsx47y6w4" path="res://resources/animated_sprites/bee.tres" id="9_fcf0x"]
+[ext_resource type="Texture2D" uid="uid://c55e5ahrvk4qb" path="res://assets/battle/tile_movement_4.png" id="9_v0iog"]
 
 [node name="Battle" type="Node2D"]
 y_sort_enabled = true
@@ -19,6 +24,7 @@ script = ExtResource("1_mpo3c")
 [node name="cursor" parent="." instance=ExtResource("4_fkmaa")]
 unique_name_in_owner = true
 position = Vector2(208, 144)
+arrow_tiles = Array[Texture]([ExtResource("5_8qx17"), ExtResource("6_qt6rl"), ExtResource("7_74wl5"), ExtResource("8_k1ysp"), ExtResource("9_v0iog")])
 
 [node name="Coromon" parent="." instance=ExtResource("6_q547v")]
 position = Vector2(352, 96)
