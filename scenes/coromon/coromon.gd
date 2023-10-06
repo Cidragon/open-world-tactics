@@ -71,7 +71,7 @@ func is_inside_grass(target_position: Vector2 = position) -> bool:
 
 func check_grass_behavior() -> void:
 	if is_inside_grass():
-		#animated_sprite.material.set_shader_parameter("side", get_animation_index())
+		animated_sprite.material.set_shader_parameter("side", get_animation_index())
 		animated_sprite.material.set_shader_parameter("active", true)
 		#print(get_animation_index())
 		grass_overlay.visible = true
